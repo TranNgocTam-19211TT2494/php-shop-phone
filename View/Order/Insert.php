@@ -16,5 +16,5 @@
     </p>
 </div>
 <?php
-	include_once("Controller/Cart/Detail.php");
+    include_once("Controller/Cart/Detail.php");
 ?>

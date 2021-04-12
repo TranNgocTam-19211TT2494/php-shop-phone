@@ -10,15 +10,13 @@
 
             <!-- Content -->
             <div id="content">
-            <?php                    
-                    if(isset($_GET['mod'])){
+            <?php
+                    if (isset($_GET['mod'])) {
                         $a = ucfirst($_GET['mod']);
                         $b = ucfirst($_GET['act']);
             
                         include_once("Controller/".$a."/".$b.".php");
-                    }
-                    else
-                    {
+                    } else {
                         include_once("Controller/Products/Manage.php");
                     }
             ?>
@@ -30,7 +28,7 @@
                    
                     <ul id="sidebar" style="
     position: relative;
-    top: -49px;"> 
+    top: 33px;"> 
                         <li style = "border: 1px solid;
     margin-right: 84px;"><a href="admin.php?mod=products&act=manage" style = "margin-left: 20px;font-size: large;"><span>Dashboard</span></a></li>
                         <li style = "border: 1px solid;

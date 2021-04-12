@@ -1,7 +1,7 @@
 <?php
     session_start();
     ob_start();
-    if(!isset($_SESSION['btnLogin'])){
+    if (!isset($_SESSION['btnLogin'])) {
         header('location:login.php');
     }
   
@@ -69,7 +69,9 @@
                         <ul>
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user"></i>
-                                    <?php if(isset($_SESSION['btnLogin'])) echo $_SESSION['btnLogin'] ?> <b
+                                    <?php if (isset($_SESSION['btnLogin'])) {
+    echo $_SESSION['btnLogin'];
+} ?> <b
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -99,9 +101,9 @@
                         </form>
                     </div>
                 </div>
-                <!-- <?php
-                   // include_once("Controller/Cart/Cart.php");
-                ?> -->
+                <?php
+                //    include_once("Controller/Cart/Cart.php");
+                ?>
             </div>
         </div>
     </div> <!-- End site branding area -->

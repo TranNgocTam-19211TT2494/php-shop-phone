@@ -13,12 +13,10 @@
 					<td>
 						<select name="slManufacturer">
 				            <?php
-								foreach($manu as $rowmanu)
-								{
-								
-										echo "<option value=\"$rowmanu[ManufacturerID]\" >$rowmanu[ManufacturerName]</option>";
-								}
-							?>
+                                foreach ($manu as $rowmanu) {
+                                    echo "<option value=\"$rowmanu[ManufacturerID]\" >$rowmanu[ManufacturerName]</option>";
+                                }
+                            ?>
 				        </select>
 			    	</td>
 				</tr>
@@ -27,16 +25,14 @@
 					<td>
 				        <select name="slCategory">
 				            <?php
-								foreach($cate as $rowcate)
-								{
-									if($rowcate['CategoryID']==$row['CategoryID'])
-									{
-										echo "<option value=\"$rowcate[CategoryID]\" selected=\"selected\" >$rowcate[CategoryName]</option>";
-									}else{
-										echo "<option value=\"$rowcate[CategoryID]\" >$rowcate[CategoryName]</option>";
-									}
-								}
-							?>
+                                foreach ($cate as $rowcate) {
+                                    if ($rowcate['CategoryID']==$row['CategoryID']) {
+                                        echo "<option value=\"$rowcate[CategoryID]\" selected=\"selected\" >$rowcate[CategoryName]</option>";
+                                    } else {
+                                        echo "<option value=\"$rowcate[CategoryID]\" >$rowcate[CategoryName]</option>";
+                                    }
+                                }
+                            ?>
 				        </select>
 			    	</td>
 				</tr>

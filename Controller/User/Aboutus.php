@@ -1,3 +1,2 @@
 <?php
-	include_once("View/User/Aboutus.php");
-?>
+    include_once("View/User/Aboutus.php");

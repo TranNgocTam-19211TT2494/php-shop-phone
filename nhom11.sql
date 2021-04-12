@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th12 24, 2020 lúc 04:50 PM
+-- Thời gian đã tạo: Th4 03, 2021 lúc 08:26 AM
 -- Phiên bản máy phục vụ: 5.7.31
 -- Phiên bản PHP: 7.3.21
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `nhom4`
+-- Cơ sở dữ liệu: `nhom11`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `CategoryName` varchar(255) NOT NULL,
   `Position` int(11) DEFAULT '0',
   PRIMARY KEY (`CategoryID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `categories`
@@ -42,7 +42,9 @@ CREATE TABLE IF NOT EXISTS `categories` (
 INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Position`) VALUES
 (6, 'Laptop', 2),
 (2, 'USB', 5),
-(3, 'Điện Thoại', 1);
+(3, 'Điện Thoại', 1),
+(9, 'Loa', 1),
+(8, 'IPad', 5);
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `manufacturers` (
   `ManufacturerID` int(11) NOT NULL AUTO_INCREMENT,
   `ManufacturerName` varchar(255) NOT NULL,
   PRIMARY KEY (`ManufacturerID`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `manufacturers`
@@ -92,7 +94,8 @@ INSERT INTO `manufacturers` (`ManufacturerID`, `ManufacturerName`) VALUES
 (15, 'Huawei'),
 (16, 'Lenovo'),
 (17, 'Kington'),
-(18, 'XIAOMI');
+(18, 'XIAOMI'),
+(23, 'Nokia');
 
 -- --------------------------------------------------------
 
@@ -108,6 +111,15 @@ CREATE TABLE IF NOT EXISTS `orderitems` (
   PRIMARY KEY (`OrderID`,`ProductID`),
   KEY `ProductID` (`ProductID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `orderitems`
+--
+
+INSERT INTO `orderitems` (`OrderID`, `ProductID`, `Quantity`) VALUES
+(60, 49, 1),
+(60, 45, 5),
+(60, 48, 11);
 
 -- --------------------------------------------------------
 
@@ -126,7 +138,14 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `Status` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`OrderID`),
   KEY `UserID` (`UserID`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`OrderID`, `UserID`, `AddedDate`, `Address`, `Phone`, `Sum`, `Status`) VALUES
+(60, 39, '2021-01-15 10:23:48', '53 Võ Văn Ngân', '0939461842', 178380000, b'1');
 
 -- --------------------------------------------------------
 
@@ -148,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`ProductID`),
   KEY `ManufacturerID` (`ManufacturerID`),
   KEY `CategoryID` (`CategoryID`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `products`
@@ -157,7 +176,6 @@ CREATE TABLE IF NOT EXISTS `products` (
 INSERT INTO `products` (`ProductID`, `ManufacturerID`, `CategoryID`, `ProductName`, `ImageUrl`, `Price`, `Quantity`, `Description`, `Body`) VALUES
 (50, 17, 2, 'Dây cáp Micro USB 1m', '1128036469cap-micro-1m-esaver-ds118br-tb-avatar-1-600x600.jpg', 40000, 40, 'Dây cáp Micro USB 1 m eSaver DS118-TB có màu xanh đẹp mắt, thiết kế quen thuộc giúp người dùng dễ sử dụng ngay trong lần đầu tiên.', 'Jack cắm:	Micro USB. \r\nTính năng:	Sạc. Truyền dữ liệu. Dòng sạc tối đa:	Max 3A. \r\nĐộ dài dây:	1 m. Xuất xứ: Trung Quốc'),
 (51, 11, 3, 'iPhone Xs Max 256GB', '2048737244iphone-xs-max-256gb-white-400x460.png', 35000000, 24, 'Sau 1 năm mong chờ, chiếc smartphone cao cấp nhất của Apple đã chính thức ra mắt mang tên iPhone Xs Max. Máy các trang bị các tính năng cao cấp nhất từ chip A12 Bionic, dàn loa đa chiều cho tới camera kép tích hợp trí tuệ nhân tạo.', 'Màn hình:	OLED, 6.5\", Super Retina. \r\nHệ điều hành:	iOS 12. \r\nCamera sau:	Chính 12 MP & Phụ 12 MP.'),
-(52, 12, 6, 'Laptop HP 15 da1023TU', '964143725384886800hp-15-da0048tu-4me63pa-33397-ava1-600x600.jpg', 14000000, 30, 'Laptop HP 15 da1023TU (5NK81PA) vừa được HP cho ra mắt, với thân hình chắc chắn và trọng lượng không quá nặng để bạn có thể mang theo bên mình hằng ngày. Cấu hình máy chạy mượt mà ứng dụng văn phòng, đồ hoạ cơ bản. Đây sẽ là lựa chọn đáng cân nhắc cho sinh viên, nhân viên văn phòng.', 'CPU:	Intel Core i5 Coffee Lake, 8265U, 1.60 GHz. \r\nRAM:	4 GB, DDR4 (2 khe), 2666 MHz. \r\nỔ cứng:	HDD: 1 TB SATA3, Hỗ trợ khe cắm SSD M.2 PCIe'),
 (49, 13, 6, 'Laptop Dell Vostro 3578 i7 ', '1140683981dell-vostro-3578-ngmpf11-450x300-600x600-600x600.jpg', 20990000, 20, 'Laptop Dell Vostro 3578 là dòng máy tính xách tay mới của Dell trong năm 2018 với cấu hình cực cao bao gồm vi xử lý i7 8550U thế hệ thứ 8 có hiệu năng vượt trội, card màn hình rời Radeon 520 và 8 GB RAM. Với cấu hình mạnh mẽ máy có thể chạy tốt các ứng dụng phục vụ cho công việc, học tập, xử lý đồ hoạ cũng như chơi game ở mức cấu hình tầm trung khá mượt mà.', 'CPU:	Intel Core i7 Kabylake Refresh, 8550U, 1.80 GHz. \r\nRAM:	8 GB, DDR4 (2 khe), 2400 MHz. \r\nỔ cứng:	HDD: 1 TB. \r\nMàn hình:	15.6 inch, Full HD (1920 x 1080)'),
 (48, 13, 6, 'Laptop HP 15 da0054TU', '734178429hp-15-da0054tu-4me68pa-thumbnail-600x600.jpg', 10990000, 30, 'Laptop HP 15 da0054TU là phiên bản máy tính xách tay với cấu hình được trang bị vi xử lý chip Intel Core i3 Kabylake thế hệ 7 đem đến hiệu năng ổn định khi thao tác các tác vụ cơ bản, phù hợp cho công việc văn phòng, học tập.', ''),
 (42, 14, 6, 'Laptop Asus X407UA', '258406264asus-x407ua-i5-8250u-4gb-16gb-1tb-win10-bv485t-thumb33397-600x600.jpg', 13390000, 20, 'Laptop 407UA (BV485T) mang trong mình thiết kế trang nhã, với trọng lượng khá nhẹ phù hợp cho việc di chuyển.', 'CPU: Intel Core i5 Coffee Lake, 8250U, 1.60 GHz. RAM:	4 GB, DDR4 (2 khe), 2400 MHz'),
@@ -170,7 +188,8 @@ INSERT INTO `products` (`ProductID`, `ManufacturerID`, `CategoryID`, `ProductNam
 (40, 11, 3, 'iPhone 7 Plus 32GB', '270258762iphone-7-plus-gold-400x460.png', 12990000, 30, 'Mặc dù giữ nguyên vẻ bề ngoài so với dòng điện thoại iPhone đời trước, bù lại iPhone 7 Plus 32GB lại được trang bị nhiều nâng cấp đáng giá như camera kép đầu tiên cũng như cấu hình mạnh mẽ.', 'Màn hình: LED-backlit IPS LCD, 5.5\", Retina HD\r\nHệ điều hành:	iOS 12'),
 (35, 10, 3, 'Samsung Galaxy S10+ 128GB', '15348725291810508630samsung-galaxy-s10-plus-128gb-bac-da-sac-400x460.png', 23990000, 10, 'Samsung Galaxy S10+ đã ra mắt và thực sự người dùng khó có thể cường lại sức hút kỳ lạ tới từ siêu phẩm này của Samsung và giờ đây hãng sản xuất smartphone tới từ Hàn Quốc tiếp tục tung ra phiên bản Samsung Galaxy S10+ 128GB Bạc Đa Sắc thậm chí còn thu hút hơn các phiên bản cũ.', ''),
 (43, 17, 2, 'USB 2.0 ADATA C008 16GB', '25969262610814335483934.png', 108000, 30, '- Thiết kế thời trang, cá tính. \r\n- Tốc độ truyền tải dữ liệu nhanh. \r\n- Tự động nhận driver. ', ''),
-(36, 10, 3, 'Samsung Galaxy A50 64GB', '1867882765samsung-galaxy-a50-black-1-400x460.png', 6990000, 20, 'Samsung Galaxy A50 là chiếc smartphone tầm trung mới của Samsung trong năm 2019 với nhiều tính năng hấp dẫn, đặc biệt là có cả cảm biến vân tay dưới màn hình.', 'Màn hình: Super AMOLED, 6.4\", Full HD+\r\nHệ điều hành:	Android 9.0 (Pie)'),
+(36, 13, 3, 'Samsung Galaxy A50 64GB', '1867882765samsung-galaxy-a50-black-1-400x460.png', 6990000, 20, 'Samsung Galaxy A50 là chiếc smartphone tầm trung mới của Samsung trong năm 2019 với nhiều tính năng hấp dẫn, đặc biệt là có cả cảm biến vân tay dưới màn hình.', ''),
+(81, 12, 6, 'PC gameming', '1706494160lcd-samsung-gaming-27-inch-wqhd-144hz-1ms-lc27g55t-094020-014030-600x600.jpg', 250000000, 20, 'ádasdasa', ''),
 (37, 10, 3, 'Samsung Galaxy A70', '607206203samsung-galaxy-a70-black-400x460.png', 9290000, 12, 'Samsung Galaxy A70 là một phiên bản phóng to của chiếc Samsung Galaxy A50 đã ra mắt trước đó với nhiều cải tiến tới từ bên trong.', 'Màn hình: Super AMOLED, 6.7\", Full HD+. Hệ điều hành:	Android 9.0 (Pie)'),
 (38, 11, 3, 'iPhone Xr 64GB', '1612599405iphone-xr-black-400x460.png', 17990000, 10, 'Là  chiếc điện thoại iPhone có mức giá dễ chịu, phù hợp với nhiều khách hàng hơn, iPhone Xr vẫn được ưu ái trang bị chip Apple A12 mạnh mẽ, màn hình tai thỏ cùng khả năng chống nước chống bụi.', 'Màn hình: IPS LCD, 6.1\", Liquid Retina. Hệ điều hành:	iOS 12');
 
@@ -192,15 +211,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `UserName` (`UserName`),
   UNIQUE KEY `Email` (`Email`),
   KEY `GroupID` (`GroupID`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`UserID`, `GroupID`, `FullName`, `UserName`, `PassWord`, `Email`) VALUES
-(1, 1, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com'),
-(32, 3, 'Trường Trận', 'trannqt', '415503177d81e2364c83c1f7c868714b', 'trannqt@gmail.com');
+(35, 1, 'Trần Ngọc Tâm', 'Admin', 'b950671149c61d73b87931c6e6345659', 'TamTran2303@gmail.com'),
+(34, 3, 'Tam Tran', 'Tamsh123', 'bfd438e4a7ebf26e6c18f52bd43e4ca5', 'ngoctam2303001@gmail.com'),
+(36, 3, 'Nguyen A', 'Am12', '81dc9bdb52d04dc20036dbd8313ed055', 'nguyena112@gmail.com'),
+(39, 3, 'Ngo Thanh Thai', 'ThaiSaHuynh76', '4bf5322a3206ce2ca76d599c9bf3753e', 'ngothai635@gmail.com');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p>&copy;Đồ án wedsite chuyên máy tính và các dòng điện thoại nhóm 4 <a href="index.php"
-                            target="_blank"></a></p>
+                    <p>&copy;Đồ án wedsite nhóm 11 / design team<a href="https://www.facebook.com/tam.ngoc.5648/"
+                            target="_blank"><i class="fab fa-facebook" style="margin: 4px;"></i>Facebook</a></p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -15,6 +15,7 @@
                     <i class="fab fa-cc-paypal"></i>
                     <i class="fab fa-cc-visa"></i>
                 </div>
+              
             </div>
         </div>
     </div>

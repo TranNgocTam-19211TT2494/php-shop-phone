@@ -9,10 +9,9 @@
 				<div class="owl-stage">
 
 <?php
-	if($result){
-		foreach($result as $row){
-				
-			$chuoi = <<<EOD
+    if ($result) {
+        foreach ($result as $row) {
+            $chuoi = <<<EOD
 					<div class="owl-item active" style="width: 240px;">
 						<div class="item center" style="text-align:center">	
 							<p class="fs-icimg">
@@ -33,16 +32,13 @@
 						</div>
 					</div>				
 EOD;
-							echo $chuoi;
-		}
-	
-		
-	}
-	else {
-		echo "<center><p style=\"color: red; font-size: 20px;\">Không tìm thấy sản phẩm nào!<p></center>";
-	}
-	
-	?>
+            echo $chuoi;
+        }
+    } else {
+        echo "<center><p style=\"color: red; font-size: 20px;\">Không tìm thấy sản phẩm nào!<p></center>";
+    }
+    
+    ?>
 
 	
 				</div>

@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title> Mobile Shopping</title>
 
     <!-- icon -->
@@ -52,7 +52,7 @@
     <!-- load database -->
     <!-- php xóa  -->
 
-
+    
 </head>
 
 <body>
@@ -67,17 +67,16 @@
                             <li><a href="index.php?mod=user&act=about"><i class="fa fa-user"></i>Tài Khoản</a></li>
 
                             <?php
-                            if(isset($_SESSION["lgUserID"])){
-                            $chuoi1 = <<<EOD
+                            if (isset($_SESSION["lgUserID"])) {
+                                $chuoi1 = <<<EOD
                             <li><a href="index.php?mod=user&act=logout"><i class="fa fa-user"></i>Đăng xuất</a></li>
 
 EOD;
-                            echo $chuoi1;
+                                echo $chuoi1;
                             // if($_SESSION['lgGroupID']==1){
                             //     echo "<li><a href=\"admin.php\"><i class=\"fa fa-user\"></i>Admin</a></li>";
                             // }
-                        }
-                        else{
+                            } else {
                             $chuoi1 = <<<EOD
                             <li><a href="index.php?mod=user&act=login"><i class="fa fa-user"></i>Đăng Nhập</a></li>
                             <li><a href="index.php?mod=user&act=register"><i class="fa fa-user"></i>Đăng Ký</a></li>
@@ -88,32 +87,33 @@ EOD;
                         ?>
                         </ul>
                     </div>
+
                 </div>
 
             </div>
         </div>
     </div> <!-- End header area -->
 
-    <div class="site-branding-area">
+    <div class="site-branding-area" >
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="index.php" style="color: #333; font-family: fantasy;"><b>Đồ án Nhóm 4</b></a></h1>
+                        <h1><a href="index.php" style="color: #333; font-family: fantasy;"><b>Đồ án Nhóm 11</b></a></h1>
                     </div>
                 </div>
                 <div class="single-sidebar">
-                        
-                        <!--Start Search Products-->
-                        <?php
+
+                    <!--Start Search Products-->
+                    <?php
                             include_once("Controller/Products/Search.php");
                         ?>
-                        <!--End search products-->
-                    </div>
+                    <!--End search products-->
+                </div>
 
-                <!-- <?php
-                   // include_once("Controller/Cart/Cart.php");
-                ?> -->
+                <?php
+                   include_once("Controller/Cart/Cart.php");
+                ?>
 
             </div>
         </div>
@@ -131,12 +131,12 @@ EOD;
                     </button>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" style="color:white;">
                         <li><a href="index.php">Trang Chủ</a></li>
                         <li><a href="index.php?mod=products&act=allproducts" onclick="return isActive()">Sản Phẩm</a>
                         </li>
-                        <!-- <li><a href="index.php?mod=products&act=detail">Thông Tin Sản Phẩm</a></li> -->
-                       
+                        <li><a href="index.php?mod=products&act=detail">Thông Tin Sản Phẩm</a></li>
+
                         <li class="dropdown">
                             <a href="#" class="dropbtn">Phân Loại</a>
                             <div class="dropdown-content">
@@ -158,16 +158,14 @@ EOD;
                             </div>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropbtn">Hỏi Đáp</a>
-                            <div class="dropdown-content">
-                                
-                               
-                            </div>
+                            <a href="tintuc.php" class="dropbtn">Tin Tức</a>              
                         </li>
-
+                        <li class="dropdown">
+                            <a href="lienhe.php" class="dropbtn">Liên Hệ</a>              
+                        </li>
                     </ul>
                     <?php
-                    include_once("Controller/Cart/Cart.php");
+                    // include_once("Controller/Cart/Cart.php");
                 ?>
                 </div>
 

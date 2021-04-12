@@ -25,7 +25,9 @@
                         $dem=0;
                         foreach ($newproducts as $row) {
                             $pr = $row['Price']*1.2;
-                            if($dem==4) break;
+                            if ($dem==4) {
+                                break;
+                            }
 
                             echo "<div class=\"thubmnail-recent\">";
                             echo    "<a href=\"index.php?mod=products&act=detail&id={$row['ProductID']}\"><img src=\"Upload/{$row['ImageUrl']}\" class=\"recent-thumb\"></a>";
@@ -34,7 +36,7 @@
                             echo        "<ins>{$row['Price']}$</ins> <del>$pr$</del>";
                             echo    "</div></div>";
                             $dem++;
-                        }   
+                        }
                     ?>   
                     </div>
 </div>

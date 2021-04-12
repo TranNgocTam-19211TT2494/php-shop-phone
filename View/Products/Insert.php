@@ -7,21 +7,19 @@
         <select name="slManufacturer" style="margin-left: 10px;">
         	<option value="0">Chọn nhà cung cấp</option>
             <?php
-				foreach($manu as $row)
-				{
-					echo "<option value=\"$row[ManufacturerID]\" >$row[ManufacturerName]</option>";
-				}
-			?>
+                foreach ($manu as $row) {
+                    echo "<option value=\"$row[ManufacturerID]\" >$row[ManufacturerName]</option>";
+                }
+            ?>
         </select></p>
         <p><label>Thể loại (*)</label>
         <select name="slCategory" style="margin-left: 50px;">
         	<option value="0">Chọn thể loại</option>
             <?php
-				foreach($cate as $row)
-				{
-					echo "<option value=\"$row[CategoryID]\" >$row[CategoryName]</option>";
-				}
-			?>
+                foreach ($cate as $row) {
+                    echo "<option value=\"$row[CategoryID]\" >$row[CategoryName]</option>";
+                }
+            ?>
         </select></p>
         
         <p><label>Giá (*)</label><input type="text" name="txtPrice" id="txtPrice" value="0" style="margin-left: 85px;"/></p>

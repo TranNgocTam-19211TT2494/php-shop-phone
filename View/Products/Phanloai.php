@@ -17,10 +17,12 @@
         echo                "<a href=\"index.php?mod=products&act=viewallcategory&cateid=$cateID\" class=\"wid-view-more\">Xem tất cả</a>";
         $dem =1;
 
-                foreach ($res as $r) {
-                    if($dem==2) break;
-                    $pr = (int)($r['Price']*1.2);
-                    $chuoi=<<<EOD
+        foreach ($res as $r) {
+            if ($dem==2) {
+                break;
+            }
+            $pr = (int)($r['Price']*1.2);
+            $chuoi=<<<EOD
 
                    <div class="single-wid-product">
                         <a href="index.php?mod=products&act=detail&id={$r['ProductID']}"><img src="Upload/{$r['ImageUrl']}" alt="" class="product-thumb"></a>
@@ -37,13 +39,12 @@
                         </div>                            
                     </div>
 EOD;
-    echo $chuoi;
-    $dem++;
-                }
+            echo $chuoi;
+            $dem++;
+        }
 
-                   echo" </div>";
-                echo "</div>";
-                        
+        echo" </div>";
+        echo "</div>";
     }
                 
 ?>

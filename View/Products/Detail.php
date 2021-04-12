@@ -72,22 +72,19 @@
 foreach ($resOther as $row) {
     $pr = $row['Price']*1.2;
 
-        echo    "<div class=\"single-product\">";
-        echo        "<div class=\"product-f-image\">";
-        echo            "<img src=\"Upload/{$row['ImageUrl']}\" style=\"height:300px;\">";
-        echo        "<a href=\"index.php?mod=products&act=detail&id={$row['ProductID']}\">";
-        echo        "<button type=\"button\" class=\"btn btn-info\" id>Chi tiết</button>";
-        echo        "</a>";
-        echo        "<a href=\"Controller/Cart/Add.php?id={$row['ProductID']}\"  onclick=\"return insertCart({$row['ProductID']})\">";
-        echo          "<button type=\"button\" class=\"btn btn-info\">Mua</button>";
-        echo        "</a>";
-        echo      "</div>";
+    echo    "<div class=\"single-product\">";
+    echo        "<div class=\"product-f-image\">";
+    echo            "<img src=\"upload/{$row['ImageUrl']}\" alt=\"\" style=\"height:300px;\">";
+    echo            "<div class=\"product-hover\">";
+    echo                "<a href=\"Controller/Cart/Add.php?id={$row['ProductID']}\" onclick=\"return insertCart({$row['ProductID']})\" class=\"add-to-cart-link\"><i class=\"fa fa-shopping-cart\"></i> Thêm vào giỏ hàng</a>";
+    echo                "<a href=\"index.php?mod=products&act=detail&id={$row['ProductID']}\" class=\"view-details-link\"><i class=\"fa fa-link\"></i>Thông tin chi tiết</a>";
+     echo           "</div></div>";
 
-        echo        "<h2><a href=\"index.php?mod=products&act=detail&id={$row['ProductID']}\">{$row['ProductName']}</a></h2>";
+    echo        "<h2><a href=\"index.php?mod=products&act=detail&id={$row['ProductID']}\">{$row['ProductName']}</a></h2>";
 
-        echo        "<div class=\"product-carousel-price\">";
-        echo            "<ins>{$row['Price']}đ</ins> <del>{$pr}đ</del>";
-        echo        "</div> </div>";
+    echo        "<div class=\"product-carousel-price\">";
+    echo            "<ins>{$row['Price']}đ</ins> <del>{$pr}đ</del>";
+    echo        "</div> </div>";
 }
 
 ?>

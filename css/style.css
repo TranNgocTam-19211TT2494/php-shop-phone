@@ -75,11 +75,13 @@ body { font-family:Arial, Helvetica, sans-serif; }
     text-align: center;
 }
 
-.mainmenu-area {background: none repeat scroll 0 0 #fbfbfb;
-font-family: "Roboto Condensed",sans-serif;
+.mainmenu-area {
+background: none repeat scroll 0 0 black;
+color: white;
 text-transform: uppercase;
 width: 100%;
-z-index: 999;}
+z-index: 999;
+}
 
 
 
@@ -1171,6 +1173,7 @@ body{
 .main-ver2 .owl-item{
   height: 380px;
   border: 1px solid #fff;
+  margin: 5px;
 }
 
 .btn-info {

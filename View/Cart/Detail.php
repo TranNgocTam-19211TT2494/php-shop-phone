@@ -1,5 +1,5 @@
 <?php
-    if(!isset($_SESSION['mycart'])){
+    if (!isset($_SESSION['mycart'])) {
         echo "<center><a href=\"index.php?mod=products&act=allproducts\" class=\"btn btn-primary\" type=\"button\">Mời bạn mua hàng!</a></center>";
     }
 ?>
@@ -39,13 +39,13 @@
                         <tr class="cart_item">
                             <?php
 $sum=0;
-    foreach($_SESSION["mycart"] as $key=>$val){
+    foreach ($_SESSION["mycart"] as $key=>$val) {
         $row=$pro->GetProductByID($key);
         $sum+=$val*$row["Price"];
         // echo "<tr>";
         echo "<td class=\"product-remove\">";
         echo        "<a title=\"Remove this item\" class=\"remove\" href=\"index.php?mod=cart&act=delete&id=$key\" onclick=\"return IsDelete()\">×</a><td>";
-      //  echo "<td><img height=\"50\"  src=\"Upload/$row[ImageUrl]\" /></td>";
+        //  echo "<td><img height=\"50\"  src=\"Upload/$row[ImageUrl]\" /></td>";
         echo    "<a href=\"single-product.html\"><img width=\"145\" height=\"145\" alt=\"\" class=\"shop_thumbnail\" src=\"Upload/$row[ImageUrl]\"></a></td>";
 
         echo "<td class=\"product-thumbnail\">";
@@ -73,7 +73,7 @@ $sum=0;
                     <tbody>
                         <tr class="cart-subtotal">
                             <th>Tổng giỏ hàng</th>
-                            <td><span class="amount"><?php echo number_format($sum,0);?>đ</span></td>
+                            <td><span class="amount"><?php echo number_format($sum, 0);?>đ</span></td>
                         </tr>
 
                         <tr class="shipping">
@@ -83,16 +83,17 @@ $sum=0;
 
                         <tr class="order-total">
                             <th>Tổng tiền</th>
-                            <td><strong><span class="amount"><?php echo number_format($sum,0);?>đ</span></strong> </td>
+                            <td><strong><span class="amount"><?php echo number_format($sum, 0);?>đ</span></strong> </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <?php
-    if(count($_SESSION['mycart'])==0){
+    if (count($_SESSION['mycart'])==0) {
         echo "<center><a href=\"index.php?mod=products&act=allproducts\" class=\"btn btn-primary\" type=\"button\">Mời bạn mua hàng!</a></center>";
+    } else {
+        echo "<center><a href=\"index.php?mod=order&act=add\" class=\"btn btn-primary\" type=\"button\">Đặt hàng</a></center>";
     }
-    else echo "<center><a href=\"index.php?mod=order&act=add\" class=\"btn btn-primary\" type=\"button\">Đặt hàng</a></center>";
 ?>
 
         </div>

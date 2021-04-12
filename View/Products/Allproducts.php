@@ -22,8 +22,8 @@
 
 
 <?php
-  foreach($rs as $row){
-    // $chuoi = <<<EOD
+  foreach ($rs as $row) {
+      // $chuoi = <<<EOD
       echo  "<div class=\"owl-item active\" style=\"width: 240px;\">";
       echo  "<div class=\"item center\" style=\"text-align:center\">" ;
       echo    "<p class=\"fs-icimg\">";
@@ -42,9 +42,9 @@
       echo      "</div>";
       echo    "</div>";
       echo  "</div>";
-      echo"</div>";       
+      echo"</div>";
 
-            // echo $chuoi;
+      // echo $chuoi;
   }
 ?>
         </div>
@@ -55,7 +55,7 @@
 
 
 <?php
-  if($findPage>1){
-    echo "<div><center>".Pages::PreNext($_GET['page'],"?mod=products&act=allproducts&",$findPage)."</center></div>";
+  if ($findPage>1) {
+      echo "<div><center>".Pages::PreNext($_GET['page'], "?mod=products&act=allproducts&", $findPage)."</center></div>";
   }
 ?>
