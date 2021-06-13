@@ -42,10 +42,11 @@ footer {
     width: auto;
     height: revert;
 }
-.pagination {
-    float: left;
+.pagination {   
+    /* float: left;
     position: relative;
     top: 146px;
-    left: 93%;
+    left: 93%; */
+    display: none;
 }
 </style>

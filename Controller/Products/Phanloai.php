@@ -5,6 +5,4 @@
     $pro = new Products();
 
     $result = $cate->getCategory();
-
-    
     include_once("View/Products/Phanloai.php");

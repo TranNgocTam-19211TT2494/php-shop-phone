@@ -19,83 +19,81 @@ class Pages
     }
     public static function PreNext($currPage, $url, $limitPage)
     {
+        $offset = 10;
         $next_prev="";
         if ($currPage-1<=0) {
             $next_prev.="";
         } else {
-            $next_prev.="<a href=\"".$_SERVER['PHP_SELF'].$url."page=".($currPage-1)."\"><span><</span></a> ";
+            $next_prev.="<a  href=\"".$_SERVER['PHP_SELF'].$url."page=".($currPage-1)."\" style='font-size: 2.5rem;'><span>Pre</span></a> ";
         }
-        $next_prev.="<big
-		>".$currPage."</big>";
+        $totalLinks = 9;
+        $from = $currPage - $offset;
+        $to = $currPage + $offset;
+        if ($from <= 0) {
+            $from = 1;
+            $to = $offset * 2;
+        }
+        if ($to > $totalLinks) {
+            $to = $totalLinks;
+        }
+        for($j=$from; $j <= $to ; $j++) 
+        { 
+            if ($j == $currPage){
+                $next_prev.="<a href='#'style='color:red;font-size: 2.5rem;margin: 5px;' >".$j."</a>";
+            }
+            else{
+                $next_prev.="<a href=\"".$_SERVER['PHP_SELF'].$url."page=".$j."\" style='font-size: 2.5rem;margin: 5px;'>".$j."</a>";
+            }
+          
+        } 
         if (($currPage+1)>$limitPage) {
             $next_prev.="";
         } else {
-            $next_prev.="<a href=\"".$_SERVER['PHP_SELF'].$url."page=".($currPage+1)."\"><span>></span></a> ";
+            $next_prev.="<a href=\"".$_SERVER['PHP_SELF'].$url."page=".($currPage+1)."\" style='font-size: 2.5rem;'><span>Next</span></a> ";
         }
         return $next_prev;
-    }
-    public function Pagination_Search($page, $num)
+    } 
+
+    public static function PreNextSearch($currPage, $url, $limitPage,$product)
     {
-        ?>
-	<center>
-		<div aria-label="Page navigation">
-			<ul class="pagination">
-				<li>
-					<a aria-label="Previous" href="?page=<?php if (isset($page) == 1 || isset($page) == "") {
-            echo 1;
-        } ?>">
-						<span aria-hidden="true">«</span>
-					</a>
-				</li>
-				<li>
-					<a aria-label="Previous" href="?page=<?php if ($page <= 1) {
-            echo 1;
+        $offset = 10;
+        $next_prev="";
+        if ($currPage-1<=0) {
+            $next_prev.="";
         } else {
-            echo $page - 1;
-        } ?>">
-						<span aria-hidden="true">←</span>
-					</a>
-				</li>
-				<?php
-                            for ($i = 1;$i <= $num;$i++) {
-                                ?>
-				<li class=""><a href="?page=<?php echo $i ?>"><?php echo $i ?></a>
-				</li>
-				<?php
-                            } ?>
-				<li>
-					<a aria-label="Previous" href="?page=<?php if ($page >= $num) {
-                                echo $num;
-                            } else {
-                                echo $page + 1;
-                            } ?>">
-						<span aria-hidden="true">→</span>
-					</a>
-				</li>
-				<li>
-					<a href="?page=<?php echo $num ?>" aria-label="Next">
-						<span aria-hidden="true">»</span>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</center>
-	<?php
-    }
+            $next_prev.="<a  href=\"".$_SERVER['PHP_SELF'].$url."page=".($currPage-1)."&btnTimKiem=$product"."\" style='font-size: 2.5rem;'><span>Pre</span></a> ";
+        }
+        $totalLinks = ceil($currPage/$limitPage);
+        $from = $currPage - $offset;
+        $to = $currPage + $offset;
+        if ($from <= 0) {
+            $from = 1;
+            $to = $offset * 2;
+        }
+        if ($to > $totalLinks) {
+            $to = $totalLinks;
+        }
+        for($j=$from; $j <= $to ; $j++) 
+        { 
+            if ($j == $currPage){
+                $next_prev.="<a  href=\"".$_SERVER['PHP_SELF'].$url."page=".$j."&btnTimKiem=$product"."\" style='color:red;font-size: 2.5rem;margin: 5px;' >".$j."</a>";
+            }
+            else{
+                $next_prev.="<a href=\"".$_SERVER['PHP_SELF'].$url."page=".$j."&btnTimKiem=$product"."\" style='font-size: 2.5rem;margin: 5px;'>".$j."</a>";
+            }
+          
+        } 
+        if (($currPage+1)>$limitPage) {
+            $next_prev.="";
+        } else {
+            $next_prev.="<a href=\"".$_SERVER['PHP_SELF'].$url."page=".($currPage+1)."&btnTimKiem=$product"."\" style='font-size: 2.5rem;'><span>Next</span></a> ";
+        }
+        return $next_prev;
+    } 
+   
 }
+
 ?>
 <style>
-a span {
-	border: 2px solid black;
-    margin: 27px;
-    font-size: 2.5rem;
-	background: #5bc0de;
-    color: white;
-}
-big {
-	border: 2px solid;
-    margin: 10px;
-    font-size: 2.5rem;
-}
 
 </style>

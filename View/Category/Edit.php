@@ -1,4 +1,4 @@
-<div style="width: 1000px; float: right; margin: 0 auto;">
+<div style="width: 80%; float: right; margin: 0 auto;">
 <h2><span><a href="admin.php?mod=category&act=edit&id=<?php echo $id; ?>">Chỉnh sửa thể loại</a></span></h2>
 
 <form action="admin.php?mod=category&act=edit&id=<?php echo $id; ?>" method="post" class="form">

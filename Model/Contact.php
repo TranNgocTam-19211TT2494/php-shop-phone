@@ -12,5 +12,6 @@
             $sql = "Select * from contacts o join groups u on o.GroupID = u.GroupID";
             return $this->da->FetchAll($sql);
         }
+        
        
     }

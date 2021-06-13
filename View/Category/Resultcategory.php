@@ -14,7 +14,7 @@
     }
     foreach ($result as $row) {
         // $chuoi = <<<EOD
-        echo    "<div class=\"owl-item\" style=\"width: 240px;\">";
+        echo    "<div class=\"owl-item\" style=\"width: 290px;\">";
         echo    "<div class=\"item center\" style=\"text-align:center\">"   ;
         echo        "<p class=\"fs-icimg\">";
         echo            "<img class=\"lazy\" src=\"Upload/{$row['ImageUrl']}\" title=\"{$row['ProductName']}\">";

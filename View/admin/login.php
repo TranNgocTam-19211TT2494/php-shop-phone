@@ -1,97 +1,66 @@
-<style>
-body {
-    background-image: url(images/hhh.jpg);
-    background-position: center;
+<link href="css/styles1.css" rel="stylesheet" />
 
-}
-
-.error {
-    color: red;
-}
-
-label {
-    color: white;
-    font-weight: bold;
-}
-
-.back {
-    text-decoration: none;
-    
-}
-.anmm {
-    width: 200px;
-    height: 100px;
-    background-color: white;
-    position: relative;
-    animation-name: example;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-}
-.back h1 {
-    color: black;
-    padding: 10px;
-}
-
-@keyframes example {
-    0% {
-        background-color: red;
-        left: 0px;
-        top: 0px;
-    }
-
-    25% {
-        background-color: yellow;
-        left: 200px;
-        top: 0px;
-    }
-
-    50% {
-        background-color: blue;
-        left: 0;
-        right: 0;
-        top: 0;
-    }
-
-    75% {
-        background-color: green;
-        right: 0px;
-        top: 0;
-    }
-
-    100% {
-        background-color: red;
-        right: 200px;
-        top: 0px;
-    }
-}
-</style>
-
-
-<div style="text-align: center;padding:70px;">
-    <h2><span><a href="" style="color: yellow;
-    text-decoration: none;
-    margin-left: 42px;">Đăng nhập Admin</a></span></h2>
-    <p>
-    <form method="post" action="" onsubmit="return IsLogin();" class="form">
-        <p><label>Tên đăng nhập</label><input style="margin: 12px;" type="text" name="txtUserName" id="txtUserName" />
-        </p>
-        <p><label>Mật khẩu</label><input type="password" name="txtPassWord" id="txtPassWord"
-                style="margin-left: 33px;" /></p>
-        <p><label>&nbsp;</label> <input type="submit" name="btnLogin" id="btnLogin" value="Đăng nhập" style="margin-left: 21px;
-        width: 100px;
-        height: 35px;" /></p>
-        <p id="error"></p>
-    </form>
-    </p>
-    <center>
-        <div class="anmm">
-
-            <a href="index.php" class="back">
-                <h1>
-                    TRANG CHỦ
-                </h1>
-            </a>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">Login</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post" action="" onsubmit="return IsLogin();" class="form">
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" type="name" name="txtUserName" id="txtUserName"
+                                                placeholder="name" />
+                                            <label for="inputEmail">Email address</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" name="txtPassWord" id="txtPassWord"
+                                                type="password" placeholder="Password" />
+                                            <label for="inputPassword">Password</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" id="inputRememberPassword" type="checkbox"
+                                                value="" />
+                                            <label class="form-check-label" for="inputRememberPassword">Remember
+                                                Password</label>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <a class="small" href="admin.php?mod=user&act=changepassword">Forgot Password?</a>
+                                            <!-- <a class="btn btn-primary" href="index.html">Login</a> -->
+                                            <input type="submit" class="btn btn-primary" name="btnLogin"
+                                                id="btnLogin" value="Đăng nhập" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <div class="small"><a href="admin.php?mod=user&act=register">Need an account? Sign up!</a></div>
+                                </div>
+                                <p id="error"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-    </center>
-</div>
-</div>
+        <div id="layoutAuthentication_footer">
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+  
+</body>

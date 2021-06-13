@@ -18,6 +18,11 @@ class Order
         $sql="Insert into orders(UserID,AddedDate,Address,Phone) values('$userID',now(),'$address','$phone')";
         return $this->da->ExecuteQueryInsert($sql);
     }
+    public function CountOrder()
+    {
+        $sql="Select OrderID from orders";
+        return $this->da->NumRows($sql);
+    }
     public function UpdateSum($orderID, $sum)
     {
         $sql = "Update orders set Sum = $sum where OrderID = $orderID";

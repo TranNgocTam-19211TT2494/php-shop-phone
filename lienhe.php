@@ -204,7 +204,7 @@ section .container .containerForm .formBox .inputBox input[type="submit"]:hover 
                     <div class="col-md-6">
                         <img src="images/team.jpg" alt="">
                         <a href="#" style="text-decoration: none;">
-                            <h5 style="color:black;padding: 5px;">Trần Ngọc Tâm</h5>
+                            <h5 style="color:white;padding: 4px;">Trần Ngọc Tâm</h5>
                         </a>
                     </div>
                     <div class="col-md-6">
@@ -214,7 +214,7 @@ section .container .containerForm .formBox .inputBox input[type="submit"]:hover 
                         <a href="#" style="position: relative;
     left: 19%;
     bottom: -2px;text-decoration: none;">
-                            <h5 style="color:black;">Phan Hoàng Vũ</h5>
+                            <h5 style="color:white;">Phan Hoàng Vũ</h5>
                         </a>
                     </div>
                 </div>
@@ -256,6 +256,7 @@ section .container .containerForm .formBox .inputBox input[type="submit"]:hover 
         <!-- Kết thúc đoạn mã mới-->
         <?php
                 if (isset($_GET['ho']) && isset($_GET['ten']) && isset($_GET['email']) && isset($_GET['phone']) && isset($_GET['message'])) {
+                    
                     echo "<h4 style='color:red;'>Gửi Thành Công</h4>";
                 }
             ?>

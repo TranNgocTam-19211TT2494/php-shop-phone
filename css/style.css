@@ -1,4 +1,4 @@
-.paginationfloa.tleft { float: left }
+
 .floatright { float: right }
 .alignleft {
     float: left;
@@ -143,14 +143,11 @@ z-index: 999;
 .shopping-item:hover .product-count {
     background: none repeat scroll 0 0 #000;
 }
-
-
 .mainmenu-area ul.navbar-nav li a {
-    color: #6e6a6a;
+    color: white;
     font-size: 14px;
     padding: 20px;
 }
-
 .mainmenu-area ul.navbar-nav li:hover a, .mainmenu-area ul.navbar-nav li.active a {background: #5a88ca; color:#FFF;}
 .mainmenu-area .nav > li > a:focus {color: #FFF;}
 
@@ -560,7 +557,7 @@ color: #999;
 padding: 35px 0 100px;}
 
 
-.footer-bottom-area {background: #000;color: #fff}
+.footer-bottom-area {background: #fff;color: #000}
 .footer-about-us span {
   color: #5a88ca;
 }
@@ -1155,7 +1152,6 @@ li.dropdown {
 }
 body{
   width: 100%;
-  background: beige;
 }
 .main-ver2 {
   width: 72%;

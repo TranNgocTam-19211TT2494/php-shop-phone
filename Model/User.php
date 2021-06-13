@@ -18,6 +18,11 @@ class User
         $sql = "SELECT * FROM users";
         return $this->da->Fetch($sql);
     }
+    public function CountUser()
+    {
+        $sql="Select UserID from users";
+        return $this->da->NumRows($sql);
+    }
     public function Login2($user, $pass, $user1)
     {
         foreach ($user1->getLogin() as $key) {

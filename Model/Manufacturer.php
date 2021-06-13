@@ -17,6 +17,12 @@ class Manufacturer
         $sql = "Select ManufacturerName from manufacturers where ManufacturerID = $id";
         return $this->da->Fetch($sql);
     }
+      //đếm số sản phẩm
+      public function CountManu()
+      {
+          $sql="Select ManufacturerID from manufacturers";
+          return $this->da->NumRows($sql);
+      }
     public function UpdateManufacturer($manufacturerID, $manufacturerName)
     {
         $sql="Update manufacturers set ManufacturerName='$manufacturerName' where ManufacturerID=$manufacturerID";

@@ -28,14 +28,25 @@
             $manufacturerID=$_POST["slManufacturer"];
             if (!isset($_FILES['txtImageUrl'])) {
                 $ret=$product->UpdateProduct($id, $manufacturerID, $categoryID, $productName, $price, $quantity, $description, $body);
+                if ($ret>0) {
+                    header("location:admin.php?mod=products&act=manage");
+                } else {
+                    echo "<p class=\"error\">Lỗi</p>";
+                }
             } else {
-                //print_r($_FILES);
-                $ret=$product->UpdateProduct($id, $manufacturerID, $categoryID, $productName, $price, $quantity, $description, $body, $fileName);
+                if($fileName!="") {
+                    $ret=$product->UpdateProduct($id, $manufacturerID, $categoryID, $productName, $price, $quantity, $description, $body, $fileName);
+                    if ($ret>0) {
+                        header("location:admin.php?mod=products&act=manage");
+                    } else {
+                        echo "<p class=\"error\">Lỗi</p>";
+                    }
+                }
+                else {
+                    echo "<p style='color:red;position: relative;
+                    left: 50%;'>Chỉ upload nhưng ảnh có đuôi là: jpg,png,gif</p>";
+                }
             }
-            if ($ret>0) {
-                header("location:admin.php?mod=products&act=manage");
-            } else {
-                echo "<p class=\"error\">Lỗi</p>";
-            }
+            
         }
     }

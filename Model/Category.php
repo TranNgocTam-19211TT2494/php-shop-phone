@@ -17,6 +17,11 @@
             $sql= "Select * from categories";
             return $this->da->FetchAll($sql);
         }
+        public function CountCategory()
+        {
+            $sql="Select CategoryID from categories";
+            return $this->da->NumRows($sql);
+        }
         public function GetCategoryByID($id)
         {
             $sql="Select * from categories where CategoryID='$id' order by Position";

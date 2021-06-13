@@ -31,11 +31,9 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/owl.carousel.css">
 
@@ -51,11 +49,101 @@
 
     <!-- load database -->
     <!-- php xóa  -->
+    <!-- Hover icon footer -->
+    <style>
+    .wrappers {
+        display: inline-flex;
+    }
 
-    
+    .wrappers .icon {
+        position: relative;
+        background-color: #ffffff;
+        border-radius: 50%;
+        padding: 15px;
+        margin: 10px;
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .wrappers .tooltip {
+        position: absolute;
+        top: 0;
+        font-size: 14px;
+        background-color: #ffffff;
+        color: #ffffff;
+        padding: 5px 8px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .wrappers .tooltip::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        background-color: #ffffff;
+        bottom: -3px;
+        left: 50%;
+        transform: translate(-50%) rotate(45deg);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .wrappers .icon:hover .tooltip {
+        top: -45px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .wrappers .facebook:hover,
+    .wrappers .facebook:hover .tooltip,
+    .wrappers .facebook:hover .tooltip::before {
+        background-color: #3b5999;
+        color: #ffffff;
+    }
+
+    .wrappers .twitter:hover,
+    .wrappers .twitter:hover .tooltip,
+    .wrappers .twitter:hover .tooltip::before {
+        background-color: #46c1f6;
+        color: #ffffff;
+    }
+
+    .wrappers .instagram:hover,
+    .wrappers .instagram:hover .tooltip,
+    .wrappers .instagram:hover .tooltip::before {
+        background-color: #e1306c;
+        color: #ffffff;
+    }
+
+    .wrappers .github:hover,
+    .wrappers .github:hover .tooltip,
+    .wrappers .github:hover .tooltip::before {
+        background-color: #333333;
+        color: #ffffff;
+    }
+
+    .wrappers .youtube:hover,
+    .wrappers .youtube:hover .tooltip,
+    .wrappers .youtube:hover .tooltip::before {
+        background-color: #de463b;
+        color: #ffffff;
+    }
+    </style>
 </head>
 
-<body>
+<body style="background: #fff;">
 
     <div class="header-area">
         <div class="container">
@@ -94,7 +182,7 @@ EOD;
         </div>
     </div> <!-- End header area -->
 
-    <div class="site-branding-area" >
+    <div class="site-branding-area">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
@@ -158,10 +246,7 @@ EOD;
                             </div>
                         </li>
                         <li class="dropdown">
-                            <a href="tintuc.php" class="dropbtn">Tin Tức</a>              
-                        </li>
-                        <li class="dropdown">
-                            <a href="lienhe.php" class="dropbtn">Liên Hệ</a>              
+                            <a href="lienhe.php" class="dropbtn">Liên Hệ</a>
                         </li>
                     </ul>
                     <?php

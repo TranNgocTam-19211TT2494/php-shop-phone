@@ -12,7 +12,7 @@ class Upload
         return false;
     }
     public static function IsImage($fileName)
-    {
+    {   
         $arr= array(".jpg",".png",".gif",".jpeg");
         return self::CheckFile($fileName, $arr);
     }

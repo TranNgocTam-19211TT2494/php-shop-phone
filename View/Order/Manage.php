@@ -1,45 +1,72 @@
-<br>	
-<div style="width: 1000px; float: right;">
-<h2><span><a href="admin.php?mod=order&act=manage">Quản lý đơn hàng</a></span></h2>
-<p>
-    <?php
-    echo "<div style=\"width:300px;\">";
-    foreach ($order as $row) {
-        $count = 0;
-        echo "<p>Mã đơn hàng: $row[OrderID]</p>";
-        echo "<p>Tên khách hàng: $row[FullName]</p>";
-        echo "<p>Ngày đặt hàng: $row[AddedDate]</p>";
-        $item = $oi->GetOrderItemByOrder($row['OrderID']);
-        echo "<table width='100%' class='table table-bordered table-striped'>";
-        echo "<tr>
-				<td>Tên sản phẩm</td>
-				<td>Số lượng</td>
-				<td>Giá</td>
-			</tr>";
-        
-        $sum=0;
-        foreach ($item as $rowitem) {
-            echo "<tr>
-			<td>";
-            echo $rowitem['ProductName']."</td><td>";
-            echo $rowitem['Quantity']."</td><td>";
-            echo $rowitem['Price']."</td>";
-            echo "</tr>";
-            $sum+=$rowitem['Quantity']*$rowitem['Price'];
-        }
-        echo "</table>";
-        echo "Tổng đơn hàng là: ".$sum. "(VNĐ)";
-        echo "<br>";
-        echo "<a href=\"admin.php?mod=order&act=delete&id=$row[OrderID]\" onclick=\"return IsDelete()\" style = 'border: 2px solid;'>Xóa đơn hàng<img src=\"Images/Delete.gif\" /></a></td><td>"."<br><br>";
-        if ($row['Status'] == 0) {
-            echo "<a href=\"admin.php?mod=order&act=update&id=$row[OrderID]\" style = 'border: 2px solid;'>Xác nhận Đơn Hàng<img src=\"Images/Edit.gif\" /></a></td><td>";
-        } else {
-            echo "Đã Xác Nhận Đơn";
-        }
-        echo "<hr/>";
+<style>
+    #content {
+        padding-bottom: 500px;
     }
-    ?>
-    </table>
-	</div>
-</p>
+</style>
+<h1 class="mt-4">Orders</h1>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        DataTable Orders
+    </div>
+    <div class="card-body">
+
+        <table id="datatablesSimple">
+
+            <thead>
+                <tr class="title">
+                    <th style="text-align: center;">Mã đơn hàng</th>
+                    <th style="text-align: center;">Tên khách hàng</th>
+                    <th style="text-align: center;">Tên sản phẩm</th>
+                    <th style="text-align: center;">Số lượng</th>
+                    <th style="text-align: center;">Giá</th>
+                    <th style="text-align: center;">Tổng giá tiền</th>
+                    <th style="text-align: center;">Ngày đặt hàng</th>
+                    <th style="text-align: center;">Xóa đơn hàng</th>
+                    <th style="text-align: center;">Xác nhận đơn</th>
+                </tr>
+            </thead>
+            <?php
+                foreach ($order as $row) {
+                    $item = $oi->GetOrderItemByOrder($row['OrderID']);
+                    $sum=0;
+                    foreach ($item as $rowitem) {
+                        $sum+=$rowitem['Quantity']*$rowitem['Price'];
+
+                        echo "<tr><td style='text-align: center;'>";
+                        echo $row['OrderID']."</td><td style='text-align: center;'>";
+                        echo $row['FullName']."</td><td style='text-align: center;'>";
+                        echo $rowitem['ProductName']."</td><td style='text-align: center;'>";
+                        echo $rowitem['Quantity']."</td><td style='text-align: center;'>";
+                        echo $rowitem['Price']."</td><td style='text-align: center;'>";
+                        echo $sum."</td><td style='text-align: center;'>";
+                        echo $row['AddedDate']."</td><td style='text-align: center;'>";
+                        echo "<a href=\"javascript:confirmDeleteOrder('admin.php?mod=order&act=delete&id=$row[OrderID]')\"  onclick=\"return IsDelete()\" ><img src=\"Images/Delete.gif\" /></a></td><td style='text-align: center;'>";
+                        if ($row['Status'] == 0) {
+                            echo "<a href=\"admin.php?mod=order&act=update&id=$row[OrderID]\" style = 'border: 2px solid;'>Xác nhận<img src=\"Images/Edit.gif\" /></a>";
+                        } else {
+                            echo "Đã Xác Nhận Đơn";
+                        }
+                        echo "</td></tr>";
+                        
+                    }
+                }
+             ?>
+        </table>
+
+    </div>
 </div>
+<script>
+$(document).ready(function() {
+    
+    $('.container-fluid').remove();
+
+});
+</script>
+<script>
+function confirmDeleteOrder(delUrl) {
+  if (confirm("Bạn có chắc chắn muốn xóa đơn hàng?")) {
+   document.location = delUrl;
+  }
+}
+</script>

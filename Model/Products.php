@@ -31,9 +31,16 @@
         {
             return $this->da->FetchAll("Select * from manufacturers");
         }
+        //Sản phẩm mới nhất 
         public function getProducts1()
         {
-            $sql="Select * from products";
+            $sql="SELECT * FROM products ORDER BY ProductID DESC";
+            return $this->da->FetchAll($sql);
+        }
+        //Sản bán chạy nhất
+        public function getProductByOrderItem()
+        {
+            $sql="SELECT * FROM products , orderitems WHERE products.ProductID = orderitems.ProductID GROUP BY products.ProductID";
             return $this->da->FetchAll($sql);
         }
         public function getProductsByPrice($type)
@@ -51,12 +58,11 @@
             $sql="Select ProductID from products";
             return $this->da->NumRows($sql);
         }
-        public function Search($txtSearch)
+        public function Search($txtSearch,$start,$end)
         {
-            $sql = "Select ProductID,ProductName,ImageUrl,Price,Quantity from products where ProductName like '%$txtSearch%' or Price like '%$txtSearch%'";
+            $sql = "Select ProductID,ProductName,ImageUrl,Price,Quantity from products where ProductName like '%$txtSearch%' or Price like '%$txtSearch%' ORDER BY ProductID DESC LIMIT $start,$end";
             return $this->da->FetchAll($sql);
         }
-
         //tìm kiếm admin:
         public function SearchProducts($txtSearch)
         {
@@ -84,14 +90,7 @@
         
         public function getProductsManage()
         {
-            $itemonpage = !empty($_GET['active'])?$_GET['active age']:5;
-            $page = !empty($_GET['page'])?$_GET['page']:1;
-            $offset= ($page-1)*$itemonpage;
-            
-            $numberPage = ceil(27/$itemonpage);
-            
-            $sql = "Select ProductID, ProductName, ImageUrl, Price, Quantity, ManufacturerName, CategoryName from products p join Categories c on p.CategoryID=c.CategoryID join Manufacturers m on p.ManufacturerID=m.ManufacturerID order by p.ProductID desc limit ".$itemonpage." offset ".$offset;
-            include "page.php";
+            $sql = "Select ProductID, ProductName, ImageUrl, Price, Quantity, ManufacturerName, CategoryName from products p join Categories c on p.CategoryID=c.CategoryID join Manufacturers m on p.ManufacturerID=m.ManufacturerID order by p.ProductID desc";
             return $this->da->FetchAll($sql);
         }
         public function DeleteProducts($id)
@@ -99,9 +98,13 @@
             $sql = "Delete from products where ProductID=$id";
             return $this->da->ExecuteQuery($sql);
         }
-        public function InsertProduct($manuID, $cateID, $proName, $Image, $Price, $Quantity, $Description, $Body)
-        {
-            $sql = "Insert into products(ManufacturerID,CategoryID,ProductName,ImageUrl,Price,Quantity,Description,Body) values ($manuID,$cateID,'$proName','$Image',$Price,$Quantity,'$Description','$Body')";
+        public function InsertProduct($manuID, $cateID, $proName, $Image="", $Price, $Quantity, $Description, $Body)
+        {   if($Image == "") {
+                $sql = "Insert into products(ManufacturerID,CategoryID,ProductName,ImageUrl,Price,Quantity,Description,Body) values ($manuID,$cateID,'$proName',NULL,$Price,$Quantity,'$Description','$Body')";
+            } else{
+                $sql = "Insert into products(ManufacturerID,CategoryID,ProductName,ImageUrl,Price,Quantity,Description,Body) values ($manuID,$cateID,'$proName','$Image',$Price,$Quantity,'$Description','$Body')";
+            }
+           
             return $this->da->ExecuteQuery($sql);
         }
         public function UpdateProduct($productID, $manufacturerID, $categoryID, $productName, $price, $quantity, $description, $body, $imageUrl="")

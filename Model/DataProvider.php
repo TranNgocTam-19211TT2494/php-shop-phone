@@ -4,7 +4,7 @@
         private $link;//bien ket noi csdl
         public function __construct()
         {
-            $this->link=mysqli_connect("localhost", "root", "", "nhom11");
+            $this->link=mysqli_connect("localhost", "root", "", "nhom11","3309");
         }
         public function ExecuteQuery($sql)
         {

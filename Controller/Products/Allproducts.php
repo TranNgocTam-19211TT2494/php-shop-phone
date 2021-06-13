@@ -1,12 +1,11 @@
 <?php
     include_once("Model/Products.php");
     include_once("Model/Pages.php");
-    define("MAX", 4);
+    define("MAX", 6);
     $pro = new Products();
     $count = $pro->CountProducts();
     $findStart = Pages::findStart(MAX);
     $findPage = Pages::findPages($count, MAX);
-
     if (!isset($_POST['selectPrice'])) {
         $rs = $pro->GetProducts($findStart, MAX);
     } else {

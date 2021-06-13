@@ -28,12 +28,15 @@
                 if ($ret>0) {
                     header("location:admin.php?mod=products&act=manage");
                 } else {
-                    echo "<p class=\"error\">Thêm bị lỗi</p>";
+                    echo "<p style='color:red;position: relative;
+                    left: 50%;' class=\"error\">Thêm bị lỗi</p>";
                 }
             } else {
-                echo "<p>Giá hoặc số lượng không hợp lệ</p>";
+                echo "<p style='color:red;position: relative;
+                left: 50%;'>Giá hoặc số lượng không hợp lệ</p>";
             }
         } else {
-            echo "<p>Vui lòng chọn file ảnh</p>";
+            echo "<p style='color:red;position: relative;
+            left: 50%;'>Chỉ upload nhưng ảnh có đuôi là: jpg,png,gif</p>";
         }
     }
