@@ -22,6 +22,10 @@
 .fa-star-o {
     color: black;
 }
+/* tổng rate */
+.rating .active {
+    color: #FFC107 !important;
+}
 </style>
 
 <div class="product-big-title-area">
@@ -55,7 +59,44 @@
                 <div class="product-inner">
                     <h2 class="product-name"><?php echo $res['ProductName'];?></h2>
 
+                    <!-- Tổng số đánh giá -->
+                    <?php
+                        
+                        include("Model/Review.php");
+                        $review = new Review();
+                        $rates = $review->getReview();
 
+                        $numberRating = $review->totalRating();
+                      
+                        $sumRating = $review->sumRating();
+                        
+                        
+                        $itemAge = 0;
+                        if($numberRating != 0) {
+                            $itemAge = round($sumRating / $numberRating,2);
+                            
+                        }
+                    ?>
+                    <?php 
+                        for ($i=1; $i <= 5; $i++) { 
+                            echo "<i class=\"fa fa-star {{ $i <= $itemAge ? 'active' : ''}}\"></i>
+                            ";
+                        }
+                    
+                    ?>
+
+                    <!-- Thông kế đánh giá sản phẩm -->
+                    <?php
+                        $proid = new Products();
+                        if (isset($_GET['id'])) {
+                            $id = $_GET['id'];
+                            $checkidproduct = $proid->getProductById($id);
+                            
+                            foreach ($rates as $key => $value) {
+                                if ($value['ProductID'] == $res['ProductID']) {
+                                    ?>
+                                    <span class="color-count"> (<?php echo $numberRating ?>) đánh giá</span>
+                    <?php    }  }} ?>
                     <!-- Gía sản phẩm -->
                     <div class="product-inner-price">
                         <ins><?php echo $res['Price'];?>đ</ins> <del><?php echo $pr;?>đ</del>
@@ -130,7 +171,6 @@ foreach ($resOther as $row) {
 
 
 
-include("Model/Review.php");
 
 $reviews = new Review();
 

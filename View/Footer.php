@@ -76,10 +76,40 @@
 
              </div>
          </div>
-
-
      </div>
  </div>
+
+
+ <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+     <i class="fa fa-arrow-up" aria-hidden="true"></i>
+ </button>
+ <script>
+//Get the button
+let mybutton = document.getElementById("btn-back-to-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (
+        document.body.scrollTop > 100 ||
+        document.documentElement.scrollTop > 100
+    ) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+ </script>
  <!-- End hover -->
  <!-- jQuery sticky menu -->
  <script src="js/owl.carousel.min1.js"></script>
@@ -93,14 +123,8 @@
  <!-- Slider -->
  <script type="text/javascript" src="js/bxslider.min.js"></script>
  <script type="text/javascript" src="js/script.slider.js"></script>
+ <!-- spimers -->
 
-
- <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
- <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
- <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
  </body>
 
  </html>

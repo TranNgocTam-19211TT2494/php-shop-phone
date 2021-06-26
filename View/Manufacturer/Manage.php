@@ -28,24 +28,16 @@
         echo "<tr><td>";
         echo $row['ManufacturerID']."</td><td>";
         echo $row['ManufacturerName']."</td><td>";
-        echo "<a href=\"javascript:confirmDeleteManufacture('admin.php?mod=manufacturer&act=delete&id=$row[ManufacturerID]')\" onclick=\"return IsDelete()\"><img src=\"Images/Delete.gif\" /></a></td><td>";
+        echo "<a href=\"admin.php?mod=manufacturer&act=delete&id=$row[ManufacturerID]\" onclick=\"return IsDelete()\"><img src=\"Images/Delete.gif\" /></a></td><td>";
         echo "<a href=\"admin.php?mod=manufacturer&act=edit&id=$row[ManufacturerID]\"><img src=\"Images/Edit.gif\" /></a>";
         echo "</td></tr>";
     }
     ?>
         </table>
-
     </div>
 </div>
 <script>
 $(document).ready(function() {
     $('.container-fluid').remove();
 });
-</script>
-<script>
-function confirmDeleteManufacture(delUrl) {
-  if (confirm("Bạn có chắc chắn muốn xóa?")) {
-   document.location = delUrl;
-  }
-}
 </script>

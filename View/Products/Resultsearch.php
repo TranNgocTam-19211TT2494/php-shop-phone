@@ -46,11 +46,26 @@ EOD;
 		</div>
 	</div>
 </div>
+<center>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="?page=<?php ?>" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="?page=<?php ?>">1</a></li>
+    <li class="page-item"><a class="page-link" href="?page=<?php ?>">2</a></li>
+    <li class="page-item"><a class="page-link" href="?page=<?php ?>">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="?page=<?php ?>">Next</a>
+    </li>
+  </ul>
+</nav>
+</center>
 
-<?php
+<!-- <?php
 
 if ($findPage>1) {
-	echo "<div><center>".Pages::PreNextSearch($_GET['page'], "?mod=products&act=resultsearch&", $findPage,$_POST['txtSearch'])."</center></div>";
+	echo "<div><center>".Pages::PreNextSearch($_GET['page'], "?mod=products&act=resultsearch&", 6,$_POST['txtSearch'])."</center></div>";
 }
-	?>
+	?> -->
 <hr/>

@@ -61,7 +61,7 @@ class Pages
         if ($currPage-1<=0) {
             $next_prev.="";
         } else {
-            $next_prev.="<a  href=\"".$_SERVER['PHP_SELF'].$url."page=".($currPage-1)."&btnTimKiem=$product"."\" style='font-size: 2.5rem;'><span>Pre</span></a> ";
+            $next_prev.="<a  href=\"".$url."page=".($currPage-1)."&btnTimKiem=$product"."\" style='font-size: 2.5rem;'><span>Pre</span></a> ";
         }
         $totalLinks = ceil($currPage/$limitPage);
         $from = $currPage - $offset;
@@ -76,17 +76,17 @@ class Pages
         for($j=$from; $j <= $to ; $j++) 
         { 
             if ($j == $currPage){
-                $next_prev.="<a  href=\"".$_SERVER['PHP_SELF'].$url."page=".$j."&btnTimKiem=$product"."\" style='color:red;font-size: 2.5rem;margin: 5px;' >".$j."</a>";
+                $next_prev.="<a  href=\"".$url."page=".$j."&btnTimKiem=$product"."\" style='color:red;font-size: 2.5rem;margin: 5px;' >".$j."</a>";
             }
             else{
-                $next_prev.="<a href=\"".$_SERVER['PHP_SELF'].$url."page=".$j."&btnTimKiem=$product"."\" style='font-size: 2.5rem;margin: 5px;'>".$j."</a>";
+                $next_prev.="<a href=\"".$url."page=".$j."&btnTimKiem=$product"."\" style='font-size: 2.5rem;margin: 5px;'>".$j."</a>";
             }
           
         } 
         if (($currPage+1)>$limitPage) {
             $next_prev.="";
         } else {
-            $next_prev.="<a href=\"".$_SERVER['PHP_SELF'].$url."page=".($currPage+1)."&btnTimKiem=$product"."\" style='font-size: 2.5rem;'><span>Next</span></a> ";
+            $next_prev.="<a href=\"".$url."page=".($currPage+1)."&btnTimKiem=$product"."\" style='font-size: 2.5rem;'><span>Next</span></a> ";
         }
         return $next_prev;
     } 

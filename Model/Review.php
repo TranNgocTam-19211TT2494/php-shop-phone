@@ -22,4 +22,15 @@
             $sql = "Insert into product_reviews(ProductID,UserID,rate,review) values ($ProductID,40,$rate,'$review')";
             return $this->da->ExecuteQuery($sql);
         }
+        // Tình tổng số rate:
+        public function sumRating() {
+            $sql="SELECT SUM(product_reviews.rate) AS Tong FROM `product_reviews` , products WHERE product_reviews.ProductID=products.ProductID";
+            return $this->da->NumRows($sql);
+        }
+        // Đếm số rating
+        public function totalRating() {
+            $sql="SELECT COUNT(*) FROM `product_reviews` , products WHERE product_reviews.ProductID = products.ProductID";
+            return $this->da->NumRows($sql);
+        }
+        
     }

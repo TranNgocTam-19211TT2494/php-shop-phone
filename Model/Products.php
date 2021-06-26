@@ -60,7 +60,7 @@
         }
         public function Search($txtSearch,$start,$end)
         {
-            $sql = "Select ProductID,ProductName,ImageUrl,Price,Quantity from products where ProductName like '%$txtSearch%' or Price like '%$txtSearch%' ORDER BY ProductID DESC LIMIT $start,$end";
+            $sql = "SELECT ProductID,ProductName,ImageUrl,Price,Quantity FROM products WHERE ProductName LIKE '%$txtSearch%' OR Price LIKE '%$txtSearch%' ORDER BY ProductID DESC LIMIT $start,$end";
             return $this->da->FetchAll($sql);
         }
         //tìm kiếm admin:

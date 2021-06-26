@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/owl.carousel.css">
 
@@ -140,6 +140,14 @@
         background-color: #de463b;
         color: #ffffff;
     }
+
+    #btn-back-to-top {
+        cursor: pointer;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+    }
     </style>
 </head>
 
@@ -187,7 +195,7 @@ EOD;
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="index.php" style="color: #333; font-family: fantasy;"><b>Đồ án Nhóm 11</b></a></h1>
+                        <h1><a href="index.php" style="color: #333; font-family: fantasy;"><b>Moble Shop</b></a></h1>
                     </div>
                 </div>
                 <div class="single-sidebar">
